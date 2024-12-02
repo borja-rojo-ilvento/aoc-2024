@@ -23,10 +23,17 @@
 		pkgs = import nixpkgs { inherit system overlays; };
 
 		rustToolChain = pkgs.rustToolchain;
+		buildRustPackage = {name, path, bin ? name }:
+			pkgs.rustPlatform.buildRustPackage {
+			inherit name;
+			src = ./${path};
+			cargoLock.lockFile = ./${path}/Cargo.lock;
+			buildType = "release";
+			buildInputs = with pkgs; [];
+		};
 
 		execs = {
-			day-1 = import (self + "/nix/buildRustPackage.nix") {
-				rustypkgs = pkgs;
+			day-1 = buildRustPackage {
 				name = "day-1";
 				path = "bin/day-1";
 			};
