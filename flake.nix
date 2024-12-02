@@ -28,11 +28,12 @@
 		rustToolChain = pkgs.rustToolchain;
 		buildRustPackage = {name, path, bin ? name }:
 			pkgs.rustPlatform.buildRustPackage {
-			inherit name;
-			src = ./${path};
-			cargoLock.lockFile = ./${path}/Cargo.lock;
-			buildType = "release";
-			buildInputs = with pkgs; [];
+				inherit name;
+				src = ./${path};
+				cargoLock.lockFile = ./${path}/Cargo.lock;
+				buildType = "release";
+				buildInputs = with pkgs; [];
+				cargoLock.outputHashes = {};
 		};
 
 		execs = {
@@ -55,5 +56,11 @@
 		};
 
 		packages.default = execs.day-1;
+		apps = {
+			day-1 = {
+				type = "app";
+				program = "${execs.day-1}/bin/day-1";
+			};
+		};
 	});
 }
