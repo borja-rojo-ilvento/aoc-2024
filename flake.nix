@@ -26,7 +26,7 @@
 
 		execs = {
 			day-1 = import (self + "/nix/buildRustPackage.nix") {
-				inherit pkgs;
+				rustypkgs = pkgs;
 				name = "day-1";
 				path = "bin/day-1";
 			};

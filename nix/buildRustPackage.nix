@@ -2,8 +2,8 @@
 rustypkgs.rustPlatform.buildRustPackage {
   inherit name;
   src = ./${path};
-  cargoLock.lockfile = ./${path}/Cargo.lock;
+  cargoLock.lockFile = ./${path}/Cargo.lock;
   buildType = "release";
-  buildInputs = with pkgs; []
+  buildInputs = with rustypkgs; [];
 }
 
