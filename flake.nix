@@ -42,11 +42,15 @@
 	{
 		devShells.default = pkgs.mkShell {
 			buildInputs = with pkgs; [
+				code-cursor
 				rustToolChain
+				cargo
+				rust-analyzer
+				rustfmt
+				clippy
 			];
 		};
 
 		packages.default = execs.day-1;
-	}
-	);
+	});
 }
