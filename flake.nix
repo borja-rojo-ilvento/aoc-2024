@@ -20,7 +20,10 @@
 			})
 		];
 	
-		pkgs = import nixpkgs { inherit system overlays; };
+		pkgs = import nixpkgs {
+			inherit system overlays;
+			allowUnfree = true;
+		};
 
 		rustToolChain = pkgs.rustToolchain;
 		buildRustPackage = {name, path, bin ? name }:
