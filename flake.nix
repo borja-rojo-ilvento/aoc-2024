@@ -52,6 +52,7 @@
 				rustfmt
 				clippy
 			];
+			NIXPKGS_ALLOW_UNFREE = "1";
 		};
 
 		packages.default = execs.day-1;
