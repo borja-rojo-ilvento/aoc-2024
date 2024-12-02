@@ -22,7 +22,7 @@
 	
 		pkgs = import nixpkgs {
 			inherit system overlays;
-			allowUnfree = true;
+			config.allowUnfree = true;
 		};
 
 		rustToolChain = pkgs.rustToolchain;
@@ -52,7 +52,6 @@
 				rustfmt
 				clippy
 			];
-			NIXPKGS_ALLOW_UNFREE = "1";
 		};
 
 		packages.default = execs.day-1;
