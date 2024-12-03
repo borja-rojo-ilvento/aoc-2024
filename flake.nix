@@ -48,7 +48,7 @@ in these two tools.
 				src = ./.;
 				cargoLock.lockFile = ./Cargo.lock;
 				buildType = "release";
-				buildInputs = with pkgs; [];
+				buildInputs = /*with pkgs;*/ [];
 				cargoLock.outputHashes = {};
 		};
 
@@ -66,19 +66,14 @@ in these two tools.
 				rust-analyzer
 				rustfmt
 				clippy
+				nil
 			];
 		};
 
-		packages.default = execs.day-1;
-		apps = {
-			day-1 = {
+		packages = execs;
+		apps = builtins.mapAttrs (name: package: {
 				type = "app";
-				program = "${execs.day-1}/bin/day-1";
-			};
-			day-2 = {
-				type = "app";
-				program = "${execs.day-2}/bin/day-2";
-			};
-		};
+				program = "${package}/bin/${name}";
+		}) execs;
 	});
 }
