@@ -1,3 +1,19 @@
+/*# Advent of Code 2024
+
+This flake manages the development of the advent of code 2024 solutions.
+
+## Description
+
+I am using this to learn more about nix and rust development. This file will
+be in flux as I make changes to aspects of this projet in leu of being a novice
+in these two tools.
+
+## Features
+
+- Deploy a dev shell with all the tools needed to develop this project
+- Builds binaries in the `src/bin` directory
+- Run the binaries built using the build tool
+*/
 {
   description = "Advent of Code 2024";
 
@@ -26,21 +42,18 @@
 		};
 
 		rustToolChain = pkgs.rustToolchain;
-		buildRustPackage = {name, path, bin ? name }:
+		buildRustPackage = name:
 			pkgs.rustPlatform.buildRustPackage {
 				inherit name;
-				src = ./${path};
-				cargoLock.lockFile = ./${path}/Cargo.lock;
+				src = ./.;
+				cargoLock.lockFile = ./Cargo.lock;
 				buildType = "release";
 				buildInputs = with pkgs; [];
 				cargoLock.outputHashes = {};
 		};
 
 		execs = {
-			day-1 = buildRustPackage {
-				name = "day-1";
-				path = "bin/day-1";
-			};
+			day-1 = buildRustPackage "day-1";
 		};
 	in
 	{

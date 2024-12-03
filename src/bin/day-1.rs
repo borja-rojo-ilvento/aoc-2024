@@ -2,7 +2,7 @@ use std::iter::zip;
 use itertools::Itertools;
 use std::collections::HashMap;
 fn main() {
-    let contents = include_str!("list.txt");
+    let contents = include_str!("../../inputs/day-1/list.txt");
     // println!("{:?}", contents);
     // let lines = contents.lines();
     // println!("{:?}", lines);    
