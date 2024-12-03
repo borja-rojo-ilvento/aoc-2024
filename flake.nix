@@ -54,6 +54,7 @@ in these two tools.
 
 		execs = {
 			day-1 = buildRustPackage "day-1";
+			day-2 = buildRustPackage "day-2";
 		};
 	in
 	{
@@ -73,6 +74,10 @@ in these two tools.
 			day-1 = {
 				type = "app";
 				program = "${execs.day-1}/bin/day-1";
+			};
+			day-2 = {
+				type = "app";
+				program = "${execs.day-2}/bin/day-2";
 			};
 		};
 	});
