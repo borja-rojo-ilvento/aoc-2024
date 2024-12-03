@@ -1,3 +1,4 @@
+use aoc_2024::checks::{changes_direction, too_different};
 fn main() {
-    println!("Hello, world!");
+    let contents = include_str!("../../inputs/day-2/reports.txt");
 }
