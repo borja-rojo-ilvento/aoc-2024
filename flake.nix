@@ -55,6 +55,8 @@ in these two tools.
 		execs = {
 			day-1 = buildRustPackage "day-1";
 			day-2 = buildRustPackage "day-2";
+			day-3 = buildRustPackage "day-3";
+			day-4 = buildRustPackage "day-4";
 		};
 	in
 	{
